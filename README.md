@@ -31,3 +31,5 @@ podman inspect <container> | grep -i networkmode
 ```bash
 podman inspect <pod-name-or-id> | grep -i ip
 ```
+
+- By: Brian
