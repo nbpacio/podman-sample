@@ -1,6 +1,4 @@
 
-
-
 #Connecting Containers via Podman:
 
 ## Create a Network:
@@ -30,6 +28,40 @@ podman inspect <container> | grep -i networkmode
 
 ```bash
 podman inspect <pod-name-or-id> | grep -i ip
+```
+
+## Allow container port in firewall:
+
+-On the RHEL VM, open port 5050:
+
+```bash
+
+sudo firewall-cmd --permanent --add-port=5050/tcp
+
+sudo firewall-cmd --reload
+```
+
+-Also open port 5432 for PostgreSQL (if you want direct access):
+
+```bash
+
+sudo firewall-cmd --permanent --add-port=5432/tcp
+sudo firewall-cmd --reload
+```
+
+- Verify firewall rules:
+
+```bash
+sudo firewall-cmd --list-ports
+```
+- Test from your local PC:
+  Open terminal on your local PC and test connectivity:
+
+```bash
+
+ping <VM_IP>
+
+telnet <VM_IP> 5050  
 ```
 
 - By: Brian
